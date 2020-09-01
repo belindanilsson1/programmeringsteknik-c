@@ -21,7 +21,7 @@ namespace WordsApp
 
             char[] vowels = new char[] { 'a', 'o', 'e', 'i', 'u', 'y', 'å', 'ä', 'ö' };
 
-            string enteredString = Console.ReadLine;
+            string enteredString = Console.ReadLine();
             string lowercaseString = enteredString.ToLower();
 
             string[] words = lowercaseString.Split(" ", StringSplitOptions.RemoveEmptyEntries);
@@ -39,7 +39,10 @@ namespace WordsApp
                     }
                 }
             
-                if (word.Length)
+                if (word.Length > longestWord.Length)
+                {
+
+                }
 
                 {
 
