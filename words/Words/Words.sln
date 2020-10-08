@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordsApp", "WordsApp\WordsApp.csproj", "{B2288DB6-CF50-43AB-B862-6A7E4552C13D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordsApp", "WordsApp\WordsApp.csproj", "{B2288DB6-CF50-43AB-B862-6A7E4552C13D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Numbers", "..\..\Numbers\Numbers\Numbers.csproj", "{EF0474B1-E992-4AA4-A858-CE144A45ABA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B2288DB6-CF50-43AB-B862-6A7E4552C13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2288DB6-CF50-43AB-B862-6A7E4552C13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2288DB6-CF50-43AB-B862-6A7E4552C13D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF0474B1-E992-4AA4-A858-CE144A45ABA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF0474B1-E992-4AA4-A858-CE144A45ABA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF0474B1-E992-4AA4-A858-CE144A45ABA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF0474B1-E992-4AA4-A858-CE144A45ABA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

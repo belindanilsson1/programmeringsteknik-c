@@ -27,37 +27,27 @@ namespace WordsApp
             string[] words = lowercaseString.Split(" ", StringSplitOptions.RemoveEmptyEntries);
             int vowelCount = 0;
             int wordCount = words.Length;
-            string longestWord = string.Empty´;
+            string longestWord = string.Empty;
 
-            foreach (var word in words)
-            {   
-                (var character in word)
+            foreach (string word in words)
+            {
+                foreach (var character in word)
                 {
                     if (vowels.Contains(character))
                     {
                         vowelCount++;
                     }
                 }
-            
+
                 if (word.Length > longestWord.Length)
                 {
-
-                }
-
-                {
-
+                    longestWord = word;
                 }
             }
 
-            for (var i = 0; i < myTestString.Lenght; i++)
-            {
-
-            }
-            vowels.Contains();
-
-                Console.WriteLine("Word count: " + wordCount);
-                Console.WriteLine("Vowel count:" + vowelCount);
-            Console.WriteLine("Longest word: " + )
+            Console.WriteLine($"Word count: {wordCount}");
+            Console.WriteLine($"Vowel count: {vowelCount}");
+            Console.WriteLine($"Longest word: {longestWord} som har {longestWord.Length} bokstäver.");
         }
     }
 }
