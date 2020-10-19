@@ -34,55 +34,19 @@ namespace Resizer
             // Options-objektet behöver skapas från args
             // https://github.com/commandlineparser/commandline#quick-start-examples
 
-
-            // 1. Skala om en bild beroende på angiven breddparameter, tex. 512 pixlar
+            
+            // 1. Skala om en bild beroende på angiven breddparameter
             // 2. Lägg till en höjdparameter och skala om beroende på dessa.
             // 3. Lägg till ett skärpefilter om bildens storlek minskas.
             // 4. Lägg till parametrar för färgmättnad, ljusstyrka och kontrast.
-
-            //Använder . för att få åtkomst till default, och för att få åtkomst till parsearguments.
-            //Fäller ner för att det är en metodkedja, mer läsbart.
-            Parser.Default.ParseArguments<Options>(args)
-                          .WithParsed<Options>(Run);
         }
 
         static void Run(Options options)
         {
-            using (var stream = File.OpenRead(options.Input))
+            using (var job = new ImageJob())
             {
-                var outPutFileName = GetOutputFileName(options.Input);
-
-                using (var outStream = File.OpenWrite(outPutFileName))
-                {
-                    var hints = new ResampleHints
-                    {
-                        SharpenWhen = SharpenWhen.Downscaling,
-                        SharpenPercent = 20
-                    };
-
-                    using (var job = new ImageJob())
-                    {
-                        job.Decode(stream, false)
-                           .ConstrainWithin(options.Width,options.Height)
-                           .ColorFilterSrgb(ColorFilterSrgb.Grayscale_Bt709)
-                           .EncodeToStream(outStream, false, new MozJpegEncoder(90))
-                           .Finish()
-                           .InProcessAsync()
-                           .Wait();
-
-                    }
-                }
-            }            
-        }
-        static string GetOutputFileName(string path)
-        {
-            string directory = Path.GetDirectoryName(path);
-            string fileName = Path.GetFileNameWithoutExtension(path);
-            string extension = Path.GetExtension(path);
-
-            string newFileName = $"{directory}\\{fileName}--resized{extension}";
-
-            return Path.Combine(directory, newFileName);
+                
+            }
         }
     }  
 }

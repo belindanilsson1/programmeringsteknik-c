@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TimeSheet.Common;
-using TimeSheet.Common.Data;
-using TimeSheet.Common.Models;
 
 // Please note - THIS IS A BAD APPLICATION - DO NOT REPLICATE WHAT IT DOES
 // This application was designed to simulate a poorly-built application that
@@ -33,57 +30,41 @@ namespace ConsoleUI
             {
                 if (timeWorked > paymentModel.HourLimit)
                 {
-                    Simulatepayment(paymentModel, timeWorked);
-                    break;
+                    ttl += i;
                 }
-            }           
+            }
+            Console.WriteLine("Simulating Sending email to Acme");
+            Console.WriteLine("Your bill is $" + ttl * 150 + " for the hours worked.");
+            for (i = 0; i < ents.Count; i++)
+            {
+                if (ents[i].WorkDone.Contains("ABC"))
+                {
+                    ttl += i;
+                }
+            }
+            Console.WriteLine("Simulating Sending email to ABC");
+            Console.WriteLine("Your bill is $" + ttl * 125 + " for the hours worked.");
+            for (i = 0; i < ents.Count; i++)
+            {
+                ttl += ents[i].HoursWorked;
+            }
+            if (ttl > 40)
+            {
+                Console.WriteLine("You will get paid $" + ttl * 15 + " for your work.");
+            }
+            else
+            {
+                Console.WriteLine("You will get paid $" + ttl * 10 + " for your time.");
+            }
             Console.WriteLine();
             Console.Write("Press any key to exit application...");
             Console.ReadKey();
         }
+    }
 
-        static List<TimeSheetEntryModel> GetTimeSheetEntries()
-        {
-            List<TimeSheetEntryModel> timeSheetEntries = new List<TimeSheetEntryModel>();
-            bool continueEntering;
-
-            do
-            {
-                Console.Write("Enter what you did: ");
-                string workDone = Console.ReadLine();
-
-                Console.Write("How long did you do it for (in hours): ");
-                int hoursDone = int.Parse(Console.ReadLine());
-
-                TimeSheetEntryModel entry = new TimeSheetEntryModel
-                {
-                    HoursWorked = hoursDone,
-                    WorkDone = workDone
-                };
-                timeSheetEntries.Add(entry);
-
-                Console.Write("Do you want to enter more time (yes/no):");
-                continueEntering = Console.ReadLine().ToLower() == "yes";
-                //continueEntering = Console.ReadLine().Equals("yes", StringComparison.OrdinalIgnoreCase);               
-
-            }
-            while (continueEntering == true);
-
-            return timeSheetEntries;
-        }
-        static void Simulatepayment(PaymentModel paymentModel, int hours)
-        {
-            decimal amountToPay = PaymentProcessor.CalculatePayment(paymentModel, hours);
-
-            Console.WriteLine($"You will get paid ${amountToPay} for your {paymentModel.Label}");
-        }
-
-        static void SimulateSendingMail(CustomerModel customer, int hours)
-        {
-            decimal amountToBill = hours * customer.HourlyRate;
-
-            Console.WriteLine($"Simulating Sending email to {customer.Name}");
-            Console.WriteLine($"Your bill is ${amountToBill} for the hours worked.");
-        }
-    }   
+    public class TimeSheetEntry
+    {
+        public string WorkDone;
+        public int HoursWorked;
+    }
 }

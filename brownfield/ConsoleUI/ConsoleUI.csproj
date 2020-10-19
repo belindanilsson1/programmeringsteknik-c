@@ -49,11 +49,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TimeSheet.Common\TimeSheet.Common.csproj">
-      <Project>{f98c30f7-0ca5-4b60-ba74-2e1b6d383e88}</Project>
-      <Name>TimeSheet.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
