@@ -13,6 +13,9 @@ namespace currencies
             // (Valutor lagras på RegionInfo, en egenskap på CultureInfo) 
 
             // 3. Lägg till ett ytterligare val för valuta att konvertera till (förutom SEK).  
+
+
+
         }
     }
 }
